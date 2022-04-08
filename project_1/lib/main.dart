@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes:{
            '/': (context) => const MyLogin(),
-           '/search': (context) => const SearchBar(),
+           '/search': (context) => GridSearchScreen(),
       },
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
