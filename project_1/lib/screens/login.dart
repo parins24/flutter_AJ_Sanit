@@ -17,7 +17,7 @@ class MyLogin extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('/thaek.png', height: 300,), 
+              Image.asset('assets/thaek.png', height: 300,), 
               Text(
                 'Welcome',
                 style: Theme.of(context).textTheme.headline2,
