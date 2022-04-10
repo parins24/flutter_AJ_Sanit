@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Mall_description.dart';
 import './Mall_description.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 
 class MallDetail extends StatefulWidget {
   final Mall mall;
@@ -78,6 +80,15 @@ class _MallDetailState extends State<MallDetail> {
             //   ),
             // ),
             // TODO: Add Slider() here
+            ElevatedButton(
+                child: const Text('Map'),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/map');
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.yellow,
+                ),
+              ),
             Slider(
               // 10
               min: 0,

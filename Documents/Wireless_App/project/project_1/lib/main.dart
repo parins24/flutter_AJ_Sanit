@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/map.dart';
 import 'package:provider/provider.dart';
 import '../screens/login.dart';
 import '../screens/search.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       routes:{
            '/': (context) => const MyLogin(),
            '/search': (context) => GridSearchScreen(),
+           '/map': (context) => MapScreen()
       },
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
