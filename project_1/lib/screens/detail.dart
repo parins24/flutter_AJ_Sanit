@@ -47,11 +47,8 @@ class _MallDetailState extends State<MallDetail> {
                 image: NetworkImage(widget.mall.image),
               ),
             ), ),
-           
-            // 5
-            const SizedBox(
-              height: 5,
-            ),
+
+
             // 6
             Text(
               widget.mall.name,
@@ -59,34 +56,33 @@ class _MallDetailState extends State<MallDetail> {
             ),
             Text(
               widget.mall.location,
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 13),
               textAlign: TextAlign.left
             ),
-            // TODO: Add Expanded
-            // 7
-            // Expanded(
-            //   // 8
-            //   child: ListView.builder(
-            //     padding: const EdgeInsets.all(7.0),
-            //     itemCount: widget.mall.ingredients.length,
-            //     itemBuilder: (BuildContext context, int index) {
-            //       final ingredient = widget.mall.ingredients[index];
-            //       // 9
-            //       // TODO: Add ingredient.quantity
-            //       return Text(
-            //           ' ${ingredient.measure} ${ingredient.name}');
-
-            //     },
-            //   ),
-            // ),
-            // TODO: Add Slider() here
+            Text(
+              widget.mall.open,
+              style: const TextStyle(fontSize: 13),
+              textAlign: TextAlign.left
+            ),
+            Text(
+              "Time estimated : 22.1 min",
+              style: const TextStyle(fontSize: 13, color: Colors.green),
+              textAlign: TextAlign.left
+    
+            ),
+            Text(
+              "Parking space : 37/60",
+              style: const TextStyle(fontSize: 13, color: Colors.redAccent),
+              textAlign: TextAlign.left
+    
+            ),
             ElevatedButton(
                 child: const Text('Map'),
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/map');
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.yellow,
+                  primary: Colors.lightBlueAccent,
                 ),
               ),
             Slider(
@@ -106,6 +102,25 @@ class _MallDetailState extends State<MallDetail> {
               },
               // 14
               activeColor: Colors.pink.shade200,
+              inactiveColor: Colors.black,
+            ),
+            Slider(
+              // 10
+              min: 0,
+              max: 5,
+              divisions: 3,
+              // 11
+              label: '${_sliderVal } items',
+              // 12
+              value: _sliderVal.toDouble(),
+              // 13
+              onChanged: (newValue) {
+                setState(() {
+                  _sliderVal = newValue.round();
+                });
+              },
+              // 14
+              activeColor: Colors.pink.shade300,
               inactiveColor: Colors.black,
             ),
 
