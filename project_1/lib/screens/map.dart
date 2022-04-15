@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:async';
-
+import 'package:flutter_application_1/screens/Mall_description.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -46,63 +46,72 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 //   }
 // }
 class MapScreen extends StatefulWidget {
+  
+  const MapScreen(this.mall,{ Key? key }) : super(key: key);
+  final Mall mall; 
   @override
   State<MapScreen> createState() => MapScreenState();
 }
 
 class MapScreenState extends State<MapScreen> {
+ 
+
   Completer<GoogleMapController> _controller = Completer();
   TextEditingController _searchController = TextEditingController();
-  static final Marker _kGooglePlexMarker = Marker(
-    markerId: MarkerId('_kGooglePlex'),
-    infoWindow: InfoWindow(title: 'Google Plex'),
-    icon: BitmapDescriptor.defaultMarker,
-    position:  LatLng(13.886512095638809, 100.5812089267932),
-    );
-
-
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(13.886512095638809, 100.5812089267932),
-    zoom: 14.4746,
-  );
-
-  static final CameraPosition _kmall = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(13.746358822133805, 100.53474308142322),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
-
-  static final Marker _kMallMarker = Marker(  
-    markerId: MarkerId('_kGooglePlex'),
-    infoWindow: InfoWindow(title: 'Google Plex'),
-    icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-    position:  LatLng(13.746358822133805, 100.53474308142322),
-    );
-  
-  static final Polyline _kPolyline = Polyline(
-    polylineId: PolylineId('_kPolyline'),
-    points: [
-        LatLng(13.886512095638809, 100.5812089267932),
-        LatLng(13.746358822133805, 100.53474308142322),
-    ],
-    width: 5,
-    );
-
-  static final Polygon _kPolygon = Polygon(
-    polygonId: PolygonId("_kPolygon"),
-    points: [
-        LatLng(13.886512095638809, 100.5812089267932),
-        LatLng(13.746358822133805, 100.53474308142322),
-        LatLng(13.65, 100.536474308142322),
-        LatLng(13.92, 100.536474308142322),
-    ],
-     strokeWidth: 5,
-     fillColor: Colors.transparent,
-  );
+  late CameraPosition _kmall;
   @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
     // ignore: unnecessary_new
-    return new Scaffold(
+        Marker _kMallMarker = Marker(  
+            markerId: MarkerId('_kGooglePlex'),
+            infoWindow: InfoWindow(title: 'Google Plex'),
+            icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+            position:  LatLng(widget.mall.lat, widget.mall.long),
+        );
+        
+        Polyline _kPolyline = Polyline(
+            polylineId: PolylineId('_kPolyline'),
+            points:  [
+                LatLng(13.886512095638809, 100.5812089267932),
+                LatLng(widget.mall.lat, widget.mall.long),
+            ],
+            width: 5,
+        );
+        Marker _kGooglePlexMarker = Marker(
+            markerId: MarkerId('_kGooglePlex'),
+            infoWindow: InfoWindow(title: 'Google Plex'),
+            icon: BitmapDescriptor.defaultMarker,
+            position:  LatLng(13.886512095638809, 100.5812089267932),
+        );
+
+
+        CameraPosition _kGooglePlex = CameraPosition(
+            target: LatLng(13.886512095638809, 100.5812089267932),
+            zoom: 14.4746,
+        );
+
+         _kmall = CameraPosition(
+            bearing: 192.8334901395799,
+            target: LatLng(widget.mall.lat, widget.mall.long),
+            tilt: 59.440717697143555,
+            zoom: 19.151926040649414
+          );
+
+  
+  
+
+        // Polygon _kPolygon = Polygon(
+        //   polygonId: PolygonId("_kPolygon"),
+        //   points: [
+        //       LatLng(13.886512095638809, 100.5812089267932),
+        //       LatLng(widget.mall.lat, widget.mall.long),
+        //       LatLng(13.65, 100.536474308142322),
+        //       LatLng(13.92, 100.536474308142322),
+        //   ],
+        //   strokeWidth: 5,
+        //   fillColor: Colors.transparent,
+        // );
+    return Scaffold(
       appBar: AppBar(title: Text('Google Maps'),),
       body: Column(
         children: [

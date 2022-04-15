@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Mall_description.dart';
 import './Mall_description.dart';
+import 'package:flutter_application_1/screens/map.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
@@ -18,9 +19,9 @@ class MallDetail extends StatefulWidget {
   }
 }
 
-// TODO: Add _mallDetailState here
+
 class _MallDetailState extends State<MallDetail> {
-  // TODO: Add _sliderVal here
+
   int _sliderVal = 1;
 
   @override
@@ -64,22 +65,27 @@ class _MallDetailState extends State<MallDetail> {
               style: const TextStyle(fontSize: 13),
               textAlign: TextAlign.left
             ),
-            Text(
+            const Text(
               "Time estimated : 22.1 min",
-              style: const TextStyle(fontSize: 13, color: Colors.green),
+              style: TextStyle(fontSize: 13, color: Colors.green),
               textAlign: TextAlign.left
     
             ),
-            Text(
+            const Text(
               "Parking space : 37/60",
-              style: const TextStyle(fontSize: 13, color: Colors.redAccent),
+              style: TextStyle(fontSize: 13, color: Colors.redAccent),
               textAlign: TextAlign.left
     
             ),
             ElevatedButton(
                 child: const Text('Map'),
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/map');
+                  // Navigator.pushReplacementNamed(context, '/map');
+                  Navigator.push(context, MaterialPageRoute( builder: (context)=> Builder(
+                            builder: (context) {
+                              return  MapScreen(widget.mall);
+                            }
+                          ) ),);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.lightBlueAccent,
@@ -89,7 +95,7 @@ class _MallDetailState extends State<MallDetail> {
               // 10
               min: 0,
               max: 10,
-              divisions: 9,
+              divisions: 2,
               // 11
               label: '${_sliderVal } items',
               // 12
