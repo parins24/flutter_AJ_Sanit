@@ -99,9 +99,45 @@ class _GridSearchScreenState extends State<GridSearchScreen> {
     _textEditingController!.dispose();
     super.dispose();
   }
-
+  createAlertDialog(BuildContext context){
+    return showDialog(context: context, builder: (context){
+      return AlertDialog(
+        title: const Text("Logout"),
+        content: const Text("Confirm to logout?"),
+        actions: <Widget>[
+          MaterialButton(elevation: 5.0,
+          child: const Text('cancel'),
+          onPressed: (){
+            Navigator.pop(context);
+          },),
+          MaterialButton(elevation: 5.0,
+          child: const Text('logout'),
+          onPressed: (){
+              Navigator.pushReplacementNamed(context, '/');
+          },),
+        ],
+      );
+    }
+    );
+  }
   @override
   Widget build(BuildContext context) {
+    // Widget cancelButton = TextButton(
+    //   child: const Text("Cancel"),
+    //   onPressed:  () {},
+    // );
+    // Widget continueButton = TextButton(
+    //   child: const Text("Continue"),
+    //   onPressed:  () {},
+    // );
+    // AlertDialog alert = AlertDialog(
+    // title: const Text("AlertDialog"),
+    // content: const Text("Would you like to continue learning how to use Flutter alerts?"),
+    // actions: [
+    //   cancelButton,
+    //   continueButton,
+    // ],
+    //  );
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.pink.shade200,
@@ -113,7 +149,7 @@ class _GridSearchScreenState extends State<GridSearchScreen> {
                 controller: _textEditingController,
                 focusNode: _textFocusNode,
                 cursorColor: Colors.black,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
@@ -128,15 +164,40 @@ class _GridSearchScreenState extends State<GridSearchScreen> {
                             (element) => element.name.toLowerCase().contains(value.toLowerCase()))
                         .toList();
                     if (_textEditingController!.text.isNotEmpty &&
-                        ListSearch!.length == 0) {
+                        ListSearch!.isEmpty) {
                       print('ListSearch length ${ListSearch!.length}');
                     }
                   });
                 },
+                
               ),
-            )),
+              
+            ),actions: [
+              TextButton(
+                onPressed: (){
+                  // ProductSearch?.clear();
+                  _textEditingController!.clear();
+                  setState((){
+                    _textEditingController!.text='';
+                  });
+                },
+              child: const Icon(
+                Icons.close,
+                color: Colors.white,
+              ),
+                ),
+
+                IconButton(
+                  icon: const Icon(
+                    Icons.logout_outlined, size: 30,
+                    ), 
+                    onPressed:(){
+                      createAlertDialog(context);
+                    }
+                )
+            ]),
         body: _textEditingController!.text.isNotEmpty &&
-                ListSearch!.length == 0
+                ListSearch!.isEmpty
             ? Center(
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),

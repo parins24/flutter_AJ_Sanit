@@ -7,6 +7,10 @@ class Mall {
   String open;
   double lat;
   double long;
+  String parkImg;
+  int pSpace;
+  int mSpace;
+  int numFloor;
   
   // TODO: Add servings and ingredients here
 
@@ -17,6 +21,10 @@ class Mall {
     this.open,
     this.lat,
     this.long,
+    this.parkImg,
+    this.pSpace,
+    this.mSpace,
+    this.numFloor,
   );
   static List<Mall> samples = [
   Mall(
@@ -26,6 +34,10 @@ class Mall {
     '10.00 am - 10.00 pm',
      13.746449520996308,
      100.53469728271385,
+     "https://media-cdn.tripadvisor.com/media/photo-s/17/28/17/27/siam-paragon-shopping.jpg",
+     35,
+     61,
+     6,
   ),
   Mall(
     'CentralWorld',
@@ -34,6 +46,10 @@ class Mall {
     '10.00 am - 10.00 pm',
     13.747132249435795,
     100.53903492689187,
+    "https://jll-global-gdim-res.cloudinary.com/image/upload/t_test-ap-property-detail-floorplan-web/v1596046248/AP_ML20200729/Central-Tower-at-Central-World_20200729_e75c5627-8f5b-437d-adc8-d66f8661ede7_002.png",
+    78,
+    86,
+    8,
   ),
   Mall(
     'Icon Siam Shopping Mall',
@@ -42,6 +58,10 @@ class Mall {
     '10.00 am - 10.00 pm',
     13.726758550588203,
     100.51000559620685,
+    "https://thelist.group/realist/wp-content/uploads/2018/11/Iconsiam_DIRECTORY-1F.jpg",
+    98,
+    120,
+    5,
   ),
   Mall(
     'MBK Center',
@@ -50,6 +70,10 @@ class Mall {
     '10.00 am - 10.00 pm',
     13.7450587302345,
     100.53006731339866,
+    "https://rwg.cc/datastore/attachments/monthly_05_2012/post-22602-0-59341600-1337746969.jpg",
+    28,
+    47,
+    5,
   ),
   Mall(
     'EmQuartier', 
@@ -58,6 +82,10 @@ class Mall {
     '10.00 am - 10.00 pm',
     13.73175384503502,  
     100.56929629990533,
+    "https://i.pinimg.com/736x/36/c1/0c/36c10ce4b115b34b83087931b8d662de.jpg",
+    58,
+    78,
+    6,
   ),
   Mall(
     'Central Embassy Shopping Mall',
@@ -66,6 +94,10 @@ class Mall {
      '10.00 am - 10.00 pm',
      13.744091928338344,  
      100.54589188456306,
+     "https://www.centralembassy.com/wp-content/uploads/2021/08/CE-Directory-Revised__Level-1.jpg",
+     58,
+     90,
+     7,
   ),
   Mall(
     'Siam Discovery',
@@ -74,6 +106,10 @@ class Mall {
      '10.00 am - 10.00 pm',
      13.747033249639214,  
      100.53132761607539,
+     "https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.18169-9/16681476_1335001839855096_8921332209970370328_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=730e14&_nc_ohc=HA2vjwmT1owAX_CX1sP&_nc_oc=AQmPMON0d-LKku8jxIjLivb9y3LklaQNhbnDUtdPE9FXSO2Iok31LzUZynYwJfSn-CU&_nc_ht=scontent.fbkk7-2.fna&oh=00_AT_bi9OXLGaNpR533QgRCWGBeowBX8TiYls22EG2zr1VMg&oe=62807BE7",
+     25,
+     45,
+     5,
   ),
   Mall(
     'Siam Center',
@@ -82,6 +118,10 @@ class Mall {
      '10.00 am - 10.00 pm',
      13.746560678014562,  
      100.53263820325492,
+     "https://pmcu.co.th/wp-content/uploads/2021/01/map-siam-210108.jpg",
+     78,
+     110,
+     6,
   ),
   Mall(
     'Terminal 21',
@@ -90,6 +130,10 @@ class Mall {
      '10.00 am - 10.00 pm',
      13.739856445643877,  
      100.5601146249063,
+     "https://3.bp.blogspot.com/-3B66P9Xt9iI/WGCMg8hVYtI/AAAAAAACmjo/6s-gr_alzygtf2n4gjy1H-Opg_T9FlJ1wCLcB/s1600/TERMINAL%2B21-2F.jpg",
+     45,
+     65,
+     7,
   ),
   Mall(
     'Gaysorn Village',
@@ -98,6 +142,10 @@ class Mall {
      '10.00 am - 10.00 pm',
      13.745300735670899,
      100.54081028456308,
+     "https://images.adsttc.com/media/images/5e1c/731e/3312/fd58/9c00/045d/newsletter/2F_floorplan_bw.jpg?1578922775",
+     28,
+     45,
+     6,
   ),
   Mall(
      'Central Chidlom',
@@ -106,6 +154,10 @@ class Mall {
      '10.00 am - 10.00 pm',
      13.744335752672708,  
      100.54430078271385,
+     "https://backend.central.co.th/media/wysiwyg/store/central-chidlom/img-floor-plan-1.png",
+     85,
+     90,
+     5,
   ),
 
 ];

@@ -48,7 +48,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class MapScreen extends StatefulWidget {
   
   const MapScreen(this.mall,{ Key? key }) : super(key: key);
-  final Mall mall; 
+  final Mall mall;
+  
   @override
   State<MapScreen> createState() => MapScreenState();
 }
@@ -59,6 +60,7 @@ class MapScreenState extends State<MapScreen> {
   Completer<GoogleMapController> _controller = Completer();
   TextEditingController _searchController = TextEditingController();
   late CameraPosition _kmall;
+  late List<double> gl, ml ; 
   @override
     Widget build(BuildContext context) {
     // ignore: unnecessary_new
@@ -97,7 +99,8 @@ class MapScreenState extends State<MapScreen> {
             zoom: 19.151926040649414
           );
 
-  
+        gl = [13.886512095638809, 100.5812089267932];
+        ml = [widget.mall.lat, widget.mall.long];
   
 
         // Polygon _kPolygon = Polygon(
@@ -130,12 +133,13 @@ class MapScreenState extends State<MapScreen> {
           //      icon: Icon(Icons.search),
           //      ),
           // ],),
+          // Text( _getDistance().toString() ),
           Expanded(
             child: GoogleMap(
               mapType: MapType.normal,
               markers: {
                _kGooglePlexMarker,
-                _kMallMarker 
+                _kMallMarker, 
                },
               polylines: {
                 _kPolyline,
@@ -150,7 +154,9 @@ class MapScreenState extends State<MapScreen> {
             ),
           ),
         ],
+        
       ),
+      
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
         label: Text('To the Mall!'),
@@ -159,8 +165,10 @@ class MapScreenState extends State<MapScreen> {
     );
   }
 
+
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(_kmall));
   }
+
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/Mall_description.dart';
 import './Mall_description.dart';
 import 'package:flutter_application_1/screens/map.dart';
+import 'package:flutter_application_1/screens/park.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
@@ -71,9 +72,9 @@ class _MallDetailState extends State<MallDetail> {
               textAlign: TextAlign.left
     
             ),
-            const Text(
-              "Parking space : 37/60",
-              style: TextStyle(fontSize: 13, color: Colors.redAccent),
+             Text(
+              "Parking space : " + widget.mall.pSpace.toString()+"/"+ widget.mall.mSpace.toString(),
+              style: const TextStyle(fontSize: 13, color: Colors.redAccent),
               textAlign: TextAlign.left
     
             ),
@@ -89,6 +90,20 @@ class _MallDetailState extends State<MallDetail> {
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.lightBlueAccent,
+                ),
+              ),
+               ElevatedButton(
+                child: const Text('Park'),
+                onPressed: () {
+                  // Navigator.pushReplacementNamed(context, '/map');
+                  Navigator.push(context, MaterialPageRoute( builder: (context)=> Builder(
+                            builder: (context) {
+                              return  ParkDetail(mall: widget.mall,);
+                            }
+                          ) ),);
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red.shade200,
                 ),
               ),
             Slider(
